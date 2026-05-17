@@ -22,7 +22,7 @@ const analyticsRoutes = require("./routes/analyticsRoutes");
 const rootCauseRoutes = require("./routes/rootCauseRoutes");
 const chaosRoutes = require("./routes/chaosRoutes");
 const aggregationRoutes = require("./routes/aggregationRoutes");
-const deepAnalysisRoutes = require("./routes/deepAnalysisRoutes");
+const deepAnalysisRoutes = require("./routes/deepanalysisRoutes");
 
 
 
