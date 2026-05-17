@@ -3,6 +3,7 @@ const cors = require("cors");
 const helmet = require("helmet");
 const morgan = require("morgan");
 const rateLimit = require("express-rate-limit");
+const path = require("path");
 
 // 🔥 ROUTES
 const metricsMiddleware = require("./middleware/metricsMiddleware");
@@ -32,10 +33,7 @@ const app = express();
 // 🔥 MIDDLEWARES
 app.use(express.json());
 
-app.use(cors({
-  origin: "http://localhost:5173", // frontend URL
-}));
-
+app.use(cors());
 app.use(helmet());
 app.use(morgan("dev"));
 
@@ -74,12 +72,11 @@ app.use("/api/chaos", chaosRoutes);
 app.use("/api/aggregation", aggregationRoutes);
 app.use("/api/deep-analysis", deepAnalysisRoutes);
 // 🔥 TEST ROUTES
-app.get("/", (req, res) => {
-  res.send("Backend Server Running 🚀");
-});
+// 🔥 Serve React Frontend
+app.use(express.static(path.join(__dirname, "../../client/dist")));
 
-app.get("/test", (req, res) => {
-  res.send("Metrics Working ✅");
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../../client/dist/index.html"));
 });
 
 module.exports = app;
