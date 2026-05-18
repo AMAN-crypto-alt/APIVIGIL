@@ -418,11 +418,11 @@ function Register() {
   const handleRegister = async () => {
     try {
       setLoading(true);
-      await axios.post("http://localhost:5000/api/auth/register", {
-        name,
-        email,
-        password,
-      });
+      await axios.post("https://your-backend.onrender.com/api/auth/register", {
+          name,
+          email,
+          password,
+        });
       alert("Registration Successful 🚀");
       window.location.href = "/login";
     } catch (error) {
