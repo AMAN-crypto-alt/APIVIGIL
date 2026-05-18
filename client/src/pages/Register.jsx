@@ -418,7 +418,7 @@ function Register() {
   const handleRegister = async () => {
     try {
       setLoading(true);
-      await axios.post("https://your-backend.onrender.com/api/auth/register", {
+      await axios.post("/api/auth/register", {
           name,
           email,
           password,
